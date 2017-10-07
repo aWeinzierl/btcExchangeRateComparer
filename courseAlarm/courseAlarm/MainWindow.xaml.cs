@@ -23,6 +23,15 @@ namespace courseAlarm
         public MainWindow()
         {
             InitializeComponent();
+
+            var func = new TriggeredFunction(delegate { });
+
+            var btcTrigger = new BoundaryTrigger<decimal>(func, decimal.MinValue, decimal.MaxValue);
+            var xbtTrigger = new BoundaryTrigger<decimal>(func, decimal.MinValue, decimal.MaxValue);
+            
+            var vm = new ViewModel(btcTrigger,xbtTrigger, null);
+
+            //var crawler = new Crawler(
         }
 
         private void selectFileButton_Click(object sender, RoutedEventArgs e)
