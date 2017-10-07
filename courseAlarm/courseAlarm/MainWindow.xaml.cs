@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,19 +23,49 @@ namespace courseAlarm
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ViewModel _viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            var func = new TriggeredFunction(delegate { /*open mp3 file*/});
+            var checkingK = new TimeSpan(0, 0, 5);
+            var checkingB = new TimeSpan(0, 0, 5);
+            var vm = new ViewModel(0, 0, 5000.0m, 5000.0m, null, checkingK, checkingB);
+            _viewModel = vm;
 
-            var btcTrigger = new BoundaryTrigger<decimal>(func, decimal.MinValue, decimal.MaxValue);
-            var xbtTrigger = new BoundaryTrigger<decimal>(func, decimal.MinValue, decimal.MaxValue);
-            var timeSpan = new TimeSpan(0,0,1,0,0);
-            
-            var vm = new ViewModel(btcTrigger,xbtTrigger, null, timeSpan);
+            var krakenTimer = new Timer(_ =>
+            {
+                vm.CurrentKrakenRate = getKrakenExchangeRate();
+                CompareExchangeRates(vm);
 
-            //var crawler = new Crawler(
+            }, null, checkingK, checkingK);
+            var bitfinexTimer = new Timer(_ =>
+             {
+                 vm.CurrentBitfinexRate = getBitfinexExchangeRate();
+                 CompareExchangeRates(vm);
+
+             }, null, checkingB, checkingB);
+
+        }
+
+
+        private static void CompareExchangeRates(ViewModel vm)
+        {
+            if (vm.CurrentBitfinexRate - vm.CurrentKrakenRate > vm.MaxDifferenceKrakenToBitfinex ||
+                vm.CurrentKrakenRate - vm.CurrentBitfinexRate > vm.MaxDifferenceBitfinexToKraken)
+            {
+                Process.Start(vm.SelectedPath);
+            }
+        }
+
+        private decimal getKrakenExchangeRate()
+        {
+            return 0.0m;
+        }
+        private decimal getBitfinexExchangeRate()
+        {
+            return 0.0m;
         }
 
         private void selectFileButton_Click(object sender, RoutedEventArgs e)
@@ -42,13 +75,27 @@ namespace courseAlarm
             // Show open file dialog box
             var result = fileDialog.ShowDialog();
 
-            // Process open file dialog box results
-            if (result == true)
-            {
-                selectedFileTextBox.Text = fileDialog.FileName;
-            }
+            if (result != true) return;
+
+            selectedFileTextBox.Text = fileDialog.FileName;
+            _viewModel.SelectedPath = fileDialog.FileName;
+        }
 
 
+        public void TextBox_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= TextBox_OnGotFocus;
+        }
+
+        private void TextBox_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            if (tb.Text != string.Empty) return;
+
+            tb.Text = "Dezimalzahl";
+            tb.GotFocus += TextBox_OnGotFocus;
         }
     }
 }

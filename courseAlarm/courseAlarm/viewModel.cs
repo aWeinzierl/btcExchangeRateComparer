@@ -10,20 +10,30 @@ namespace courseAlarm
 {
     public class ViewModel
     {
-        public BoundaryTrigger<decimal> BtcUsdTrigger { get; }
-        public BoundaryTrigger<decimal> XbtUsdTrigger { get;}
         public string SelectedPath { get; set; }
-        public TimeSpan CheckingIntervallTimeSpan { get; set; }
+        public TimeSpan CheckingIntervallBitfinex { get; set; }
+        public TimeSpan CheckingIntervallKraken { get; set; }
+        public decimal MaxDifferenceKrakenToBitfinex { get; set; }
+        public decimal MaxDifferenceBitfinexToKraken { get; set; }
+        public decimal CurrentKrakenRate { get; set; }
+        public decimal CurrentBitfinexRate { get; set; }
 
         public ViewModel(
-            BoundaryTrigger<decimal> btcUsd, 
-            BoundaryTrigger<decimal> xbtUsd, 
-            string path, TimeSpan intervall)
+            decimal currentKrakenRate,
+            decimal currentBitfinexRate,
+            decimal maxDifferenceKrakenToBitfinex,
+            decimal maxDifferenceBitfinexToKrakenm,
+            string path,
+            TimeSpan intervallKraken,
+            TimeSpan intervallBitfinex)
         {
-            BtcUsdTrigger = btcUsd;
-            XbtUsdTrigger = xbtUsd;
             SelectedPath = path;
-            CheckingIntervallTimeSpan = intervall;
+            CheckingIntervallBitfinex = intervallBitfinex;
+            CheckingIntervallKraken = intervallKraken;
+            MaxDifferenceBitfinexToKraken = maxDifferenceBitfinexToKrakenm;
+            MaxDifferenceKrakenToBitfinex = maxDifferenceKrakenToBitfinex;
+            CurrentKrakenRate = currentKrakenRate;
+            CurrentBitfinexRate = currentBitfinexRate;
         }
     }
 }
