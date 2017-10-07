@@ -61,6 +61,8 @@ namespace courseAlarm
 
         private decimal getKrakenExchangeRate()
         {
+            var kc = new KrakenClient.KrakenClient();
+            kc.GetTicker(new List<string>(){ "XBTUSD" });
             return 0.0m;
         }
         private decimal getBitfinexExchangeRate()

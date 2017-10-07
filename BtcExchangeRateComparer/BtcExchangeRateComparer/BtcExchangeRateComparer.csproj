@@ -37,7 +37,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Jayrock.Json, Version=0.9.16530.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\jayrock-json.0.9.16530.1\lib\net40\Jayrock.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
@@ -59,6 +63,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BoundaryTrigger.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Helpers\Broker.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Models\CancelOrderResult.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Models\GetOrdersResult.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Models\PlaceOrderResult.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Models\RefreshOrderResult.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Program.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Properties\AssemblyInfo.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\KrakenClient.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\Models\KrakenOrder.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\Properties\AssemblyInfo.cs" />
+    <Compile Include="Dependencies\RateLimiting\EnumerableExtensions.cs" />
+    <Compile Include="Dependencies\RateLimiting\Properties\AssemblyInfo.cs" />
+    <Compile Include="Dependencies\RateLimiting\RateGate.cs" />
     <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +114,139 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Dependencies\arrivets\krakenapi\.gitignore" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\config" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\description" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\HEAD" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\hooks\applypatch-msg.sample" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\hooks\commit-msg.sample" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\hooks\post-update.sample" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\hooks\pre-applypatch.sample" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\hooks\pre-commit.sample" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\hooks\pre-push.sample" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\hooks\pre-rebase.sample" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\hooks\pre-receive.sample" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\hooks\update.sample" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\index" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\info\exclude" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\logs\HEAD" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\logs\refs\heads\master" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\01\acea4be75664227dd3ab2e3439438eba4f709c" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\01\fb3fb77083a0b7b3492b18720136f219bb884b" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\06\e523b8b6d68f4335cd08dfda9a01b59262a489" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\0a\a4def62326a66a2f36fdf7e2646db8a1f7e42f" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\0a\c96853039dc1f4b031fd4cb64300101376343a" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\14\658b6d67bcae50485b2c2cbe894dedfcf74f67" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\15\6bde6b4042a8487db8eb6e3ce4fc42723f9c38" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\19\7ace3fd59cb2e0747c85fe96620c1675adef8d" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\1b\c25fd37ae88efe99974fa049f457a68d469e92" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\1f\16c8ce5ea398013a8a6df2e4bdc78a51f9f112" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\20\00663594e66df219394300dc84e4a1790a6ce5" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\20\25d473e8a6de5de8bc438472c93990f665f5fd" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\21\01c32eb97477fc19f77081ad57d4d5a013d481" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\24\109a7601c313de7954cdce3ff5c03079e19291" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\27\087140f635cc1b71ecbaf8ba8a59127b78a54f" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\27\decf562788b0a602cd545db6d574ef9e501cfc" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\2b\f24b9b9f848d6f4ba9e31b7bae34b573e54cba" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\2e\538bdf1f794f2db89d8159838b4fb56ddc5c95" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\2f\c29e69fc768cf179765a8ef4d7a743b84288f8" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\33\9e470c33c888bdc289ece964d6334f175d4b80" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\36\16c76b9b014f954fa728a7af6810b75e547df1" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\40\ea71c18c82d5735aa7e58b30751282c56545db" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\42\72c5ae1d46aaeb429bb3b465ad9a393e6c6ca5" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\47\18b16d691c2cb371ddc0aa87e2c3a977ed59c9" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\47\63e1382ef410bb1e3a5e89b7a06861879793c8" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\48\34f22055409b4042e34eda0c86e5ef0a0b3498" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\49\260819bb423446c12bd5b1d9634c7c8d2bacc6" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\4a\5bfa888f5e549e5189a8e06a48e3807838ab58" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\4c\cda2144cc473a53cceb27387923d2140463018" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\52\04a37a147deba0481d85d46170c761759e659a" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\55\ba91d4a1c0ed5be88705091136b458f5fc2af1" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\57\8bbb7885670611a82f8ad1faf36c3255079975" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\59\b8f50c1f493d8398dc33f0572365c8fcb5d876" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\5a\93347cde0bd78f44150177967d4e6fcc042c69" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\5b\f8c65420ef150e6b1cd03d630cc903cdec090e" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\5e\55ff9d71d2d8ba4b7d510f0d6ce98f6b60d770" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\60\d7698813b368c1a6920d6e965e7adba654ea61" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\62\1682fc3b18a98c44b562abce60dae082a9de00" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\65\a084f93d1be91393eb70c97a4f3d7b521a7a70" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\69\f33222a2b67febcbc4dd85a8727e89aa26d0d9" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\6b\48e18a216ecddf987b4e13e521865e738e3f58" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\6c\0579ae5b590c4c430fd6ab44be9443ffa21133" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\6c\9740df1968e8febf3069fd7b3e44feac4f696e" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\72\1aea26f2861900f66fa17a62d207d4177a238b" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\72\2a357bb976f27aba7970a31246fafd585baa2b" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\72\e76030e904f7874df197e4cf382a673a0e7e3e" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\75\49b2eaaafd67111eff9bfaaa20deed42706ed6" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\78\58e954a3906a97ee688e3c48acaf2b9cbaf82a" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\7a\82a67346bfc6d87c4a6751fbd90417271d6272" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\7b\492a835f7f2d18cc494695b1a7b5a7702e9cff" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\80\4d3e2331d01d92cda29c2da9b8ef25a5c1aba6" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\82\ae25e58ed2a41c994e278345b7bbbaa6d6eea1" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\83\ceeef9bd876a853a6774f5db2309bc3eb25c86" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\86\dcb78cb317f1681bd120c97f25c450ac9d8b8b" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\90\123487ff9f5fb5917c82745ac14e9d9951105f" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\99\d93a18e68daa03c7c5ae432b72fd9244afd9a0" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\9d\64d7b5f8f2607946c14cc653b9741bf4977317" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\a0\b0e3b3665bda3f8faebad5d93c1e0c52005410" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\a8\7bedd4e60d5856699cde36a3945c6557f7dac6" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\a9\4246f7807bd5f47697d8d3616d5aadc28746b9" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\a9\57fda6f9d7c43cce30e912a2c688cd5b552fa0" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\aa\f2a11c802e81512a1fbb1232945f6eb6686a3e" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\ab\cc49553f47cb55d73ebb681de00a6e3b36f864" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\ad\7e5edea4e2befbc90a88866b8f9487174829e1" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\af\ed50deb6f4b4db665d1327a5433bc4776491f5" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\b0\c2d7659290a783125339b12da1ba42c6cd5591" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\b8\19428456fceffcbc5f5acc8783d65ef57a4f9f" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\ba\ed2328a83528bce568247f980cd150231b3e11" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\bb\1a1ed71aa365707a8e7d172c384bdb10cc8bdd" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\be\16ec552987464324e322ff5e5fb0f9d280ced9" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\bf\5b3058feabe70c746c21fcfe88835cc086cf92" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\c6\a8d3de4b60774b41dda4bac2664a37ec4e89b8" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\c6\d21232f70a86cb5f150c102a49cb05bc97a344" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\ca\3aff5ed43852c2b2f5810b06ffaa0485b8ef90" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\cc\18339477335181ff83e94b5bec6d8ed9684d2d" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\cf\80915001348633173b8987bc6d87e5cbb41c5d" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\cf\f138b017c38efde2db1a080fb765790a6d04c8" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\d8\89a27282ca1f24dd830f17212db67cd0e3950f" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\dc\43af6e039657473a521c17f5654da678ae9a16" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\de\d3913184d5af3b04a970e1a6cbbd2ea8be0d22" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\df\c78f0575d337b2e036bf0b0f6e4c8ffcbbcee5" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\e0\8d22ed289b70db8e157334d16db9842a73f5fb" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\e1\96967fbcb1dd6925538b014171c489021e3306" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\e1\d2cc458f47e6528bfc4e550488be5a00d473f4" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\e3\b235dbd2ceb629e97aa952483a882a900fdf2f" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\e4\712e3e44bbfa74de38c538d31d61a593a1ed16" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\e5\39581f475302f5bfa7d90717a730f19ac9d477" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\ec\d15608d91e7d9debad4469457d33bf68fc1eaf" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\ee\47e515f871c80fdd597afd21f9579fbffa60ba" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\f1\baacca820971c1a05d7baa58ffdc40d7942246" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\f2\c01d6bd61b89db9a7f785e38c6b7b3a390c691" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\f4\a2f9b8d1ad0ccb480294e17e8307536b0a8c3a" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\f5\c14326b681bd8d4a62cdc05cfda9491c3cb2e1" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\f8\7e07e3e3d892b3664ac3cfa28942012f4971d6" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\fa\3a2225d81d48022c6be2e020136cc66714e5a3" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\fa\9567d795d1850d109610246aab19ec00200cd4" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\objects\fc\aa8ba31411a5bc77529c0079ee568300b2f8cd" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\packed-refs" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\refs\heads\master" />
+    <None Include="Dependencies\arrivets\krakenapi\.git\refs\remotes\origin\HEAD" />
+    <None Include="Dependencies\arrivets\krakenapi\.vs\KrakenAPI\v15\.suo" />
+    <None Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\KrakenClientConsole.csproj.CoreCompileInputs.cache" />
+    <None Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Release\KrakenClientConsole.csproj.CoreCompileInputs.cache" />
+    <None Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\packages.config" />
+    <None Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\KrakenClient.csproj.CoreCompileInputs.cache" />
+    <None Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Release\KrakenClient.csproj.CoreCompileInputs.cache" />
+    <None Include="Dependencies\arrivets\krakenapi\KrakenClient\packages.config" />
+    <None Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\Newtonsoft.Json.6.0.1.nupkg" />
+    <None Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\Newtonsoft.Json.6.0.1.nuspec" />
+    <None Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\tools\install.ps1" />
+    <None Include="Dependencies\arrivets\krakenapi\packages\repositories.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,6 +255,40 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dependencies\arrivets\krakenapi\KrakenAPI.sln" />
+    <Content Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\KrakenClientConsole.csproj" />
+    <Content Include="Dependencies\arrivets\krakenapi\KrakenClient\KrakenClient.csproj" />
+    <Content Include="Dependencies\RateLimiting\RateLimiting.csproj" />
+    <Content Include="Dependencies\RateLimiting\RateLimiting.sln" />
+    <Resource Include="Dependencies\arrivets\krakenapi\licence.txt" />
+    <Content Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\net20\Newtonsoft.Json.dll" />
+    <Resource Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\net35\Newtonsoft.Json.dll" />
+    <Resource Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll" />
+    <Resource Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll" />
+    <Resource Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\netcore45\Newtonsoft.Json.dll" />
+    <Resource Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\netcore45\Newtonsoft.Json.xml" />
+    <Content Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\portable-net40+sl5+wp80+win8+monotouch+monoandroid\Newtonsoft.Json.dll" />
+    <Resource Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\portable-net40+sl5+wp80+win8+monotouch+monoandroid\Newtonsoft.Json.xml" />
+    <Content Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll" />
+    <Resource Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\portable-net45+wp80+win8\Newtonsoft.Json.xml" />
+    <Resource Include="Dependencies\arrivets\krakenapi\README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dependencies\arrivets\krakenapi\.git\objects\info\" />
+    <Folder Include="Dependencies\arrivets\krakenapi\.git\objects\pack\" />
+    <Folder Include="Dependencies\arrivets\krakenapi\.git\refs\tags\" />
+    <Folder Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\bin\Debug\" />
+    <Folder Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\bin\Release\" />
+    <Folder Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\TempPE\" />
+    <Folder Include="Dependencies\arrivets\krakenapi\KrakenClient\bin\Debug\" />
+    <Folder Include="Dependencies\arrivets\krakenapi\KrakenClient\bin\Release\" />
+    <Folder Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
