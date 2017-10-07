@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace courseAlarm.Properties
+namespace btcExchangeRateComparer.Properties
 {
 
 

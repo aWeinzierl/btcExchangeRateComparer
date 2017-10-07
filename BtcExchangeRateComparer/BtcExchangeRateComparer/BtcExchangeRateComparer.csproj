@@ -40,6 +40,11 @@
     <Reference Include="Jayrock.Json, Version=0.9.16530.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\jayrock-json.0.9.16530.1\lib\net40\Jayrock.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -71,6 +76,23 @@
     <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\Properties\AssemblyInfo.cs" />
     <Compile Include="Dependencies\RateLimiting\EnumerableExtensions.cs" />
     <Compile Include="Dependencies\RateLimiting\RateGate.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\ActiveOrdersRequest.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\ActiveOrdersResponse.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\ActivePositionsRequest.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\ActivePositionsResponse.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\BalancesRequest.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\BalancesResponse.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\BitfinexApi.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\BitfinexException.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\CancelAllOrdersRequest.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\CancelAllOrdersResponse.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\CancelOrderRequest.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\CancelOrderResponse.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\GenericRequest.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\NewOrderRequest.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\NewOrderResponse.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\OrderStatusRequest.cs" />
+    <Compile Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\OrderStatusResponse.cs" />
     <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -231,6 +253,90 @@
     <None Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\Newtonsoft.Json.6.0.1.nuspec" />
     <None Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\tools\install.ps1" />
     <None Include="Dependencies\arrivets\krakenapi\packages\repositories.config" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\config" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\description" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\HEAD" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\hooks\applypatch-msg.sample" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\hooks\commit-msg.sample" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\hooks\post-update.sample" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\hooks\pre-applypatch.sample" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\hooks\pre-commit.sample" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\hooks\pre-push.sample" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\hooks\pre-rebase.sample" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\hooks\pre-receive.sample" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\hooks\update.sample" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\index" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\info\exclude" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\logs\HEAD" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\logs\refs\heads\master" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\02\031903c3c001d9aba567f48042dce711974b95" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\03\25dc1df6fbe10da01f3f01a2921e8139edf41e" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\03\2d3a69fe4c066310e02b4afd02d6f852a9f82a" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\06\1c9ca950d0e8bb952c52799fb401a6614ad640" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\06\d7d624b441273b4632766f687a88a86de5a31a" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\19\76a1172bd1ca4ea0a566014db7db1cbff8d7fa" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\20\24b03b53bf96f74c2bc94f27d0fbc776e51564" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\27\9b2b986312d790bb13a1722ea58f4a46f75c50" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\28\4b5aa678bdd69363f07f263f555f38ffe41f83" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\31\2bb436e2480107593349fe3b7ebd7488d4f52a" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\3d\d3b41dc0f160f33802dabd45be1d23057f7e8b" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\4c\7869e1ec98aeced9bae153ba9c7ef96c8a93a2" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\4c\f9877bc489c3758ea1fca385969ecede5c2b76" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\51\caa86bdefd61cd42dddc62dbd16f91afcdf979" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\52\55db45cd02274f842e6cdcfafee5259ee0a1bd" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\53\f51ea9a65a29fdf396b3bcef50cd11fbabd7a1" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\55\53e9f8a9a45bb2b81f266b1a7102e26cb4d475" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\57\47e399af5722dff4e5e6d1a685abbe7dfee020" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\58\da5217c62dda7965cb039639e918719bda6107" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\58\f658e7d833bce475bda67310bad96cc1b4edac" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\5f\e5816b3c29827670e3430802a07554c3fb60ba" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\60\be504cc0648a32040fdc725c1d75a79a922aff" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\6d\27c659fae18716f242ffe990da2df0f5138fbc" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\70\aa40f3afbfe0515a8e80bb63f889056e038007" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\76\6e280b59fa842569306f331d752663b9b3bb7c" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\78\2041eaa95e77cf5799cda1815ce664d57ead2a" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\7e\1f7984f3cd251f099664dfbc52388e5a37593c" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\7f\5a646f37a6759368a9cebbde0bbefd9f03dbd8" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\80\51cb3c01f1b26baf7d2ca38be60bb56b5a85d7" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\82\8deb0564a5738143403bed9062885a767716d0" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\88\85fb2688ce2cad3240099f51d7dba081fa6bc3" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\88\a45a989d3fce282d2b6127d134d857d79fcd2c" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\89\5c1eff19626e7088cbc23f9ce9a4825f244ccc" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\8b\fcfe2da533e684905ae6b3d294189575bc0025" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\93\5b03b50eb350b137bec04d4e563bb313ec2fa8" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\94\0de5231c32145aaf4f9c8597097bbcdbb4e647" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\97\58527125b72f5170b1356ffac92c4e2a685688" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\9a\f7c98adfd88eaeacd2e90051429eab2267913e" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\a0\3aa4e1e02d071efda1f3d548aa9a07ced95d65" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\a1\3a639f011be12ba3bd401feb5d13de2ba648c5" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\a1\ddeec1f34a6a22b9248c86dce0b5ec33ddaadb" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\ae\9351454f86796ac0ead376cd11ddb7634a7a8f" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\ae\de90a4446d081052e7f11a9f986cb081975888" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\b0\96909ba9fd4e35910d679ab6f2a29accd7f36f" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\c1\63e8b11f9f834c5ba62ae7c5bb00b4575261f8" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\c3\384e1b967ebeee6592508e86eb37e405e32b0c" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\c5\c78702ab48b3df042fac64b43184efe217d2d1" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\c9\fc3695f409853db4120c5429032ec6f8bcf4a5" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\cc\3be985e01c528871f842bfb0d1ee4eece66af9" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\d3\2b38192a5c31d48677ae2497c1f677c44571b7" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\dd\e17c18eee99a10649652cae16040a5c1758b85" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\df\4401e2ecde64967714787c9c01427008fb1ce0" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\e1\6c5261e4fdfeb427a3ccc3aa29e861a1c6a542" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\e5\9af44de2ddb14170137575f1bb09790c6a877c" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\e5\ff7f8ef07b7ef53e1b6382258203bbcbc385ba" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\e6\faa3ba4e33fe042706bb3c4686bc5ea4d2cc70" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\e7\492a067860fbf687ec6d9f9b44f7441306479e" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\f2\8e8bb8d4f47f8735094305df38b84e5b0f6b60" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\f5\fd6df12dd38dcfbfa3abb68fc2bde53a2714ae" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\f6\9a99e0ea17578cab2967e0c3a637df18664bae" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\packed-refs" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\refs\heads\master" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\.git\refs\remotes\origin\HEAD" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi.suo" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Dependencies\twobeeb\BitfinexAPI\README.md" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -246,6 +352,15 @@
     <Content Include="Dependencies\arrivets\krakenapi\KrakenClient\KrakenClient.csproj" />
     <Content Include="Dependencies\RateLimiting\RateLimiting.csproj" />
     <Content Include="Dependencies\RateLimiting\RateLimiting.sln" />
+    <Content Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi.sln" />
+    <Content Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\bin\Debug\BitfinexApi.dll" />
+    <Content Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\bin\Debug\BitfinexApi.pdb" />
+    <Content Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\bin\Debug\Newtonsoft.Json.dll" />
+    <Resource Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\bin\Debug\Newtonsoft.Json.xml" />
+    <Content Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\BitfinexApi.csproj" />
+    <Resource Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\obj\x86\Debug\BitfinexApi.csproj.FileListAbsolute.txt" />
+    <Content Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\obj\x86\Debug\BitfinexApi.dll" />
+    <Content Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\obj\x86\Debug\BitfinexApi.pdb" />
     <Resource Include="Dependencies\arrivets\krakenapi\licence.txt" />
     <Content Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\net20\Newtonsoft.Json.dll" />
     <Resource Include="Dependencies\arrivets\krakenapi\packages\Newtonsoft.Json.6.0.1\lib\net20\Newtonsoft.Json.xml" />
@@ -271,6 +386,10 @@
     <Folder Include="Dependencies\arrivets\krakenapi\KrakenClient\bin\Release\" />
     <Folder Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\TempPE\" />
     <Folder Include="Dependencies\RateLimiting\Properties\" />
+    <Folder Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\info\" />
+    <Folder Include="Dependencies\twobeeb\BitfinexAPI\.git\objects\pack\" />
+    <Folder Include="Dependencies\twobeeb\BitfinexAPI\.git\refs\tags\" />
+    <Folder Include="Dependencies\twobeeb\BitfinexAPI\BitfinexApi\Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
