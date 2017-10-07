@@ -63,16 +63,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BoundaryTrigger.cs" />
-    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Helpers\Broker.cs" />
-    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Models\CancelOrderResult.cs" />
-    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Models\GetOrdersResult.cs" />
-    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Models\PlaceOrderResult.cs" />
-    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Models\RefreshOrderResult.cs" />
-    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Program.cs" />
-    <Compile Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\Properties\AssemblyInfo.cs" />
     <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\KrakenClient.cs" />
     <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\Models\KrakenOrder.cs" />
     <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -80,7 +70,6 @@
     <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Dependencies\arrivets\krakenapi\KrakenClient\Properties\AssemblyInfo.cs" />
     <Compile Include="Dependencies\RateLimiting\EnumerableExtensions.cs" />
-    <Compile Include="Dependencies\RateLimiting\Properties\AssemblyInfo.cs" />
     <Compile Include="Dependencies\RateLimiting\RateGate.cs" />
     <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -234,10 +223,6 @@
     <None Include="Dependencies\arrivets\krakenapi\.git\refs\heads\master" />
     <None Include="Dependencies\arrivets\krakenapi\.git\refs\remotes\origin\HEAD" />
     <None Include="Dependencies\arrivets\krakenapi\.vs\KrakenAPI\v15\.suo" />
-    <None Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\KrakenClientConsole.csproj.CoreCompileInputs.cache" />
-    <None Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Release\KrakenClientConsole.csproj.CoreCompileInputs.cache" />
-    <None Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\packages.config" />
     <None Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\KrakenClient.csproj.CoreCompileInputs.cache" />
     <None Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Release\KrakenClient.csproj.CoreCompileInputs.cache" />
@@ -258,7 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependencies\arrivets\krakenapi\KrakenAPI.sln" />
-    <Content Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\KrakenClientConsole.csproj" />
     <Content Include="Dependencies\arrivets\krakenapi\KrakenClient\KrakenClient.csproj" />
     <Content Include="Dependencies\RateLimiting\RateLimiting.csproj" />
     <Content Include="Dependencies\RateLimiting\RateLimiting.sln" />
@@ -283,12 +267,10 @@
     <Folder Include="Dependencies\arrivets\krakenapi\.git\objects\info\" />
     <Folder Include="Dependencies\arrivets\krakenapi\.git\objects\pack\" />
     <Folder Include="Dependencies\arrivets\krakenapi\.git\refs\tags\" />
-    <Folder Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\bin\Debug\" />
-    <Folder Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\bin\Release\" />
-    <Folder Include="Dependencies\arrivets\krakenapi\KrakenClientConsole\obj\Debug\TempPE\" />
     <Folder Include="Dependencies\arrivets\krakenapi\KrakenClient\bin\Debug\" />
     <Folder Include="Dependencies\arrivets\krakenapi\KrakenClient\bin\Release\" />
     <Folder Include="Dependencies\arrivets\krakenapi\KrakenClient\obj\Debug\TempPE\" />
+    <Folder Include="Dependencies\RateLimiting\Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

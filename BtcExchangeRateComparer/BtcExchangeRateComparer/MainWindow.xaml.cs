@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Jayrock.Json;
 
 namespace courseAlarm
 {
@@ -34,18 +36,18 @@ namespace courseAlarm
             var vm = new ViewModel(0, 0, 5000.0m, 5000.0m, null, checkingK, checkingB);
             _viewModel = vm;
 
-            var krakenTimer = new Timer(_ =>
+            var krakenTimer = new Timer(o =>
             {
                 vm.CurrentKrakenRate = getKrakenExchangeRate();
                 CompareExchangeRates(vm);
 
-            }, null, checkingK, checkingK);
-            var bitfinexTimer = new Timer(_ =>
-             {
-                 vm.CurrentBitfinexRate = getBitfinexExchangeRate();
-                 CompareExchangeRates(vm);
+            }, null, TimeSpan.Zero, checkingK);
+            var bitfinexTimer = new Timer(o =>
+            {
+                vm.CurrentBitfinexRate = getBitfinexExchangeRate();
+                CompareExchangeRates(vm);
 
-             }, null, checkingB, checkingB);
+            }, null, TimeSpan.Zero, checkingB);
 
         }
 
@@ -62,8 +64,10 @@ namespace courseAlarm
         private decimal getKrakenExchangeRate()
         {
             var kc = new KrakenClient.KrakenClient();
-            kc.GetTicker(new List<string>(){ "XBTUSD" });
-            return 0.0m;
+            var response = kc.GetTicker(new List<string>(){ "XBTUSD" });
+            var rate = (string)((JsonArray)((JsonObject)((JsonObject)response["result"])["XXBTZUSD"])["c"])[0];
+            var rateDecimal = Convert.ToDecimal(rate);
+            return rateDecimal;
         }
         private decimal getBitfinexExchangeRate()
         {
