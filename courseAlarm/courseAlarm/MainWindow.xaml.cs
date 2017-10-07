@@ -24,12 +24,13 @@ namespace courseAlarm
         {
             InitializeComponent();
 
-            var func = new TriggeredFunction(delegate { });
+            var func = new TriggeredFunction(delegate { /*open mp3 file*/});
 
             var btcTrigger = new BoundaryTrigger<decimal>(func, decimal.MinValue, decimal.MaxValue);
             var xbtTrigger = new BoundaryTrigger<decimal>(func, decimal.MinValue, decimal.MaxValue);
+            var timeSpan = new TimeSpan(0,0,1,0,0);
             
-            var vm = new ViewModel(btcTrigger,xbtTrigger, null);
+            var vm = new ViewModel(btcTrigger,xbtTrigger, null, timeSpan);
 
             //var crawler = new Crawler(
         }

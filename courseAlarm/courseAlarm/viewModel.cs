@@ -13,12 +13,17 @@ namespace courseAlarm
         public BoundaryTrigger<decimal> BtcUsdTrigger { get; }
         public BoundaryTrigger<decimal> XbtUsdTrigger { get;}
         public string SelectedPath { get; set; }
+        public TimeSpan CheckingIntervallTimeSpan { get; set; }
 
-        public ViewModel(BoundaryTrigger<decimal> btcUsd, BoundaryTrigger<decimal> xbtUsd, string path)
+        public ViewModel(
+            BoundaryTrigger<decimal> btcUsd, 
+            BoundaryTrigger<decimal> xbtUsd, 
+            string path, TimeSpan intervall)
         {
             BtcUsdTrigger = btcUsd;
             XbtUsdTrigger = xbtUsd;
             SelectedPath = path;
+            CheckingIntervallTimeSpan = intervall;
         }
     }
 }
