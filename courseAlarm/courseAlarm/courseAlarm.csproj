@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BoundaryTrigger.cs" />
+    <Compile Include="CurrencyExchangeRate.cs" />
+    <Compile Include="CurrencyExchangeRateCrawler.cs" />
     <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
