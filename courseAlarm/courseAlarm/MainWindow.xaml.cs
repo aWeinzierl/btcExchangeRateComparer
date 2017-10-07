@@ -24,5 +24,21 @@ namespace courseAlarm
         {
             InitializeComponent();
         }
+
+        private void selectFileButton_Click(object sender, RoutedEventArgs e)
+        {
+            var fileDialog = new Microsoft.Win32.OpenFileDialog();
+
+            // Show open file dialog box
+            var result = fileDialog.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                selectedFileTextBox.Text = fileDialog.FileName;
+            }
+
+
+        }
     }
 }
