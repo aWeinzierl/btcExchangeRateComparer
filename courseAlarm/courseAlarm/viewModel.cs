@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +10,15 @@ namespace courseAlarm
 {
     public class ViewModel
     {
-        public TYPE Type { get; set; }
+        public BoundaryTrigger<decimal> BtcUsdTrigger { get; }
+        public BoundaryTrigger<decimal> XbtUsdTrigger { get;}
+        public string SelectedPath { get; set; }
+
+        public ViewModel(BoundaryTrigger<decimal> btcUsd, BoundaryTrigger<decimal> xbtUsd, string path)
+        {
+            BtcUsdTrigger = btcUsd;
+            XbtUsdTrigger = xbtUsd;
+            SelectedPath = path;
+        }
     }
 }
