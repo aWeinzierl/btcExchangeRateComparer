@@ -22,41 +22,5 @@ namespace btcExchangeRateComparer.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://api.kraken.com")]
-        public string KrakenBaseAddress {
-            get {
-                return ((string)(this["KrakenBaseAddress"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string KrakenApiVersion {
-            get {
-                return ((string)(this["KrakenApiVersion"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("your kraken key")]
-        public string KrakenKey {
-            get {
-                return ((string)(this["KrakenKey"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("your kraken secret")]
-        public string KrakenSecret {
-            get {
-                return ((string)(this["KrakenSecret"]));
-            }
-        }
     }
 }

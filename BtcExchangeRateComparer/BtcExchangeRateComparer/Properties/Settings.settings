@@ -1,18 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="btcExchangeRateComparer.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="KrakenBaseAddress" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://api.kraken.com</Value>
-    </Setting>
-    <Setting Name="KrakenApiVersion" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="KrakenKey" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">your kraken key</Value>
-    </Setting>
-    <Setting Name="KrakenSecret" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">your kraken secret</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>
