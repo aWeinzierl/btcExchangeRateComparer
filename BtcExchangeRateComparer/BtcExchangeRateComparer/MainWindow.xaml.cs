@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -39,11 +40,22 @@ namespace btcExchangeRateComparer
         public MainWindow()
         {
             InitializeComponent();
-            _krakenClient = new KrakenClient.KrakenClient();
 
+            try
+            {
+                _krakenClient = new KrakenClient.KrakenClient();
+
+            }
+            catch (Exception e)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show(e.ToString(), "Error");
+                });
+            }
             var checkingK = new TimeSpan(0, 0, 5);
-            var checkingB = new TimeSpan(0, 0, 5);
-            var vm = new ViewModel(0, 0, 5000.0m, 5000.0m, null, checkingK, checkingB);
+            var checkingB = new TimeSpan(0, 0, 6);
+            var vm = new ViewModel(0, 0, 5000.0m, 5000.0m, null, checkingK, checkingB, true);
             _viewModel = vm;
 
             _kTimer = new Timer(o =>
@@ -51,42 +63,75 @@ namespace btcExchangeRateComparer
                 vm.CurrentKrakenRate = GetKrakenExchangeRate();
                 CompareExchangeRates(vm);
 
+                Application.Current.Dispatcher.Invoke(
+                    () =>
+                    {
+                        krakenKurs.Content = vm.CurrentKrakenRate.ToString(CultureInfo.InstalledUICulture);
+                        differenceTextBox.Content = Math.Abs(vm.CurrentKrakenRate - vm.CurrentBitfinexRate).
+                            ToString(CultureInfo.InstalledUICulture); ;
+                    });
+
             }, null, TimeSpan.Zero, checkingK);
             _bTimer = new Timer(o =>
             {
                 vm.CurrentBitfinexRate = GetBitfinexExchangeRate();
                 CompareExchangeRates(vm);
 
+                Application.Current.Dispatcher.Invoke(
+                    () =>
+                    {
+                        bitfinexKurs.Content = vm.CurrentBitfinexRate.ToString(CultureInfo.InstalledUICulture);
+                        differenceTextBox.Content = Math.Abs(vm.CurrentKrakenRate - vm.CurrentBitfinexRate).
+                            ToString(CultureInfo.InstalledUICulture);
+                    });
+
             }, null, TimeSpan.Zero, checkingB);
 
+
+            activateAlarmButton.IsEnabled = false;
+            bitfinexIntervall.Text = "6";
+            krakenIntervall.Text = "5";
+            krakenToBitfinex.Text =
+                _viewModel.MaxDifferenceKrakenToBitfinex.ToString(CultureInfo.InstalledUICulture);
+            bitfinexToKraken.Text =
+                _viewModel.MaxDifferenceBitfinexToKraken.ToString(CultureInfo.InstalledUICulture);
         }
 
 
-        private static void CompareExchangeRates(ViewModel vm)
+        private void CompareExchangeRates(ViewModel vm)
         {
-            if (vm.CurrentBitfinexRate - vm.CurrentKrakenRate > vm.MaxDifferenceKrakenToBitfinex ||
-                vm.CurrentKrakenRate - vm.CurrentBitfinexRate > vm.MaxDifferenceBitfinexToKraken)
+            if ((vm.CurrentBitfinexRate - vm.CurrentKrakenRate > vm.MaxDifferenceKrakenToBitfinex ||
+                 vm.CurrentKrakenRate - vm.CurrentBitfinexRate > vm.MaxDifferenceBitfinexToKraken)
+                &&
+                vm.AlarmActive)
             {
+                vm.AlarmActive = false;
                 Process.Start(vm.SelectedPath);
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    activateAlarmButton.IsEnabled = true;
+                });
             }
         }
 
         private decimal GetKrakenExchangeRate()
         {
-            var response = _krakenClient.GetTicker(new List<string>() { "XBTUSD" });
-            var rate = (string)((JsonArray)((JsonObject)((JsonObject)response["result"])["XXBTZUSD"])["c"])[0];
-            var rateDecimal = Convert.ToDecimal(rate);
-            return rateDecimal;
-        }
-
-        private string GetHexString(byte[] bytes)
-        {
-            var sb = new StringBuilder(bytes.Length * 2);
-            foreach (byte b in bytes)
+            try
             {
-                sb.Append(String.Format("{0:x2}", b));
+                var krakenClient = new KrakenClient.KrakenClient();
+                var response = krakenClient.GetTicker(new List<string>() { "XBTUSD" });
+                var rate = ((JsonArray)((JsonObject)((JsonObject)response["result"])["XXBTZUSD"])["c"])[0];
+                var rateDecimal = Convert.ToDecimal(rate, new CultureInfo("en-US"));
+                return rateDecimal;
             }
-            return sb.ToString();
+            catch (Exception e)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show(e.ToString(), "Error");
+                });
+            }
+            return 0m;
         }
 
         private decimal GetBitfinexExchangeRate()
@@ -96,15 +141,27 @@ namespace btcExchangeRateComparer
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.AutomaticDecompression = DecompressionMethods.GZip;
 
-            using (var response = (HttpWebResponse)request.GetResponse())
-            using (var stream = response.GetResponseStream())
-            using (var reader = new StreamReader(stream))
+            try
             {
-                return JsonConvert.DeserializeObject<List<decimal>>(reader.ReadToEnd())[6];
+                using (var response = (HttpWebResponse)request.GetResponse())
+                using (var stream = response.GetResponseStream())
+                using (var reader = new StreamReader(stream))
+                {
+                    return JsonConvert.DeserializeObject<List<decimal>>(reader.ReadToEnd())[6];
+                }
             }
+            catch (Exception e)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show(e.ToString(), "Error");
+                });
+            }
+            return 0m;
         }
 
-        public void selectFileButton_Click(object sender, RoutedEventArgs e)
+
+        public void SelectFileButton_Click(object sender, RoutedEventArgs e)
         {
             var fileDialog = new Microsoft.Win32.OpenFileDialog();
 
@@ -114,15 +171,16 @@ namespace btcExchangeRateComparer
             if (result != true) return;
 
             selectedFileTextBox.Text = fileDialog.FileName;
-            
-        }
 
+        }
 
         public void TextBox_OnGotFocus(object sender, RoutedEventArgs e)
         {
             var tb = (TextBox)sender;
-            tb.Text = string.Empty;
-            tb.GotFocus -= TextBox_OnGotFocus;
+            if (tb.Text == "Dezimalzahl")
+            {
+                tb.Text = string.Empty;
+            }
         }
 
         private void TextBox_OnLostFocus(object sender, RoutedEventArgs e)
@@ -131,18 +189,23 @@ namespace btcExchangeRateComparer
             if (tb.Text != string.Empty) return;
 
             tb.Text = "Dezimalzahl";
-            tb.GotFocus += TextBox_OnGotFocus;
         }
 
         private void ApplyButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _viewModel.CheckingIntervallBitfinex = new TimeSpan(0, 0, 0, 0, (int)Convert.ToDecimal(bitfinexIntervall.Text) * 1000);
-            _viewModel.CheckingIntervallKraken = new TimeSpan(0, 0, 0, 0, (int)Convert.ToDecimal(krakenIntervall.Text) * 1000);
-            _viewModel.MaxDifferenceBitfinexToKraken = Convert.ToDecimal((bitfinexToKraken.Text));
-            _viewModel.MaxDifferenceKrakenToBitfinex = Convert.ToDecimal(krakenToBitfinex.Text);
+            _viewModel.CheckingIntervallBitfinex = new TimeSpan(0, 0, 0, 0, (int)(decimal.Parse(bitfinexIntervall.Text, CultureInfo.InstalledUICulture) * 1000));
+            _viewModel.CheckingIntervallKraken = new TimeSpan(0, 0, 0, 0, (int)(decimal.Parse(krakenIntervall.Text, CultureInfo.InstalledUICulture) * 1000));
+            _viewModel.MaxDifferenceBitfinexToKraken = decimal.Parse((bitfinexToKraken.Text), CultureInfo.InstalledUICulture);
+            _viewModel.MaxDifferenceKrakenToBitfinex = decimal.Parse(krakenToBitfinex.Text, CultureInfo.InstalledUICulture);
             _viewModel.SelectedPath = selectedFileTextBox.Text;
             _bTimer.Change(_viewModel.CheckingIntervallBitfinex, _viewModel.CheckingIntervallBitfinex);
             _kTimer.Change(_viewModel.CheckingIntervallKraken, _viewModel.CheckingIntervallKraken);
+        }
+
+        private void ActivateAlarmButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _viewModel.AlarmActive = true;
+            activateAlarmButton.IsEnabled = false;
         }
     }
 }

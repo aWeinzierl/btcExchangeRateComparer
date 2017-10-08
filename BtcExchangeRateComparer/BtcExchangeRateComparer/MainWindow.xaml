@@ -5,27 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:btcExchangeRateComparer"
         mc:Ignorable="d"
-        Title="BTC Exchange Rate Comparer" Height="350" Width="523.786">
+        Title="BTC Exchange Rate Comparer" Height="360" Width="533">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="87*"/>
-        </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="91*"/>
             <ColumnDefinition Width="82*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox x:Name="groupBox" Grid.ColumnSpan="2" Header="Einstellungen" HorizontalAlignment="Left" Height="213" Margin="3,43,0,0" VerticalAlignment="Top" Width="509" Grid.Row="1"/>
-        <Button x:Name="selectFileButton" Content="Auswählen" HorizontalAlignment="Right" Margin="0,184,15,0" VerticalAlignment="Top" Width="75" Click="selectFileButton_Click" Grid.Column="1" Grid.Row="1"/>
-        <TextBox x:Name="selectedFileTextBox" HorizontalAlignment="Left" Height="23" Margin="19,183,0,0" TextWrapping="Wrap" Text="Wähle Datei aus ..." VerticalAlignment="Top" Width="379" IsEnabled="False" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <Label x:Name="label" Content="Bitfinex darf Kraken maximal übersteigen um:" HorizontalAlignment="Left"  Margin="19,59,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <Label x:Name="label1" Content="Kraken darf Bitfinex maximal übersteigen um:" HorizontalAlignment="Left" Margin="19,83,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <Label x:Name="label2" Content="Bitfinex Überprüfungsintervall in Sekunden:" HorizontalAlignment="Left" Margin="19,119,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <Label x:Name="label3" Content="Kraken Überprüfungsintervall in Sekunden:" HorizontalAlignment="Left" Margin="19,143,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <Button x:Name="applyButton" Content="Apply" HorizontalAlignment="Right" Click="ApplyButton_OnClick" Margin="0,227,15,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.506,3.141"/>
-        <TextBox x:Name="krakenToBitfinex" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2,59,0,0" TextWrapping="Wrap" Text="Dezimalzahl" LostFocus="TextBox_OnLostFocus" GotFocus="TextBox_OnGotFocus" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <TextBox x:Name="bitfinexToKraken" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2,83,0,0" TextWrapping="Wrap" Text="Dezimalzahl" LostFocus="TextBox_OnLostFocus" GotFocus="TextBox_OnGotFocus" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <TextBox x:Name="bitfinexIntervall" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2,119,0,0" TextWrapping="Wrap" Text="Dezimalzahl" LostFocus="TextBox_OnLostFocus"  GotFocus="TextBox_OnGotFocus" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <TextBox x:Name="krakenIntervall" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2,143,0,0" TextWrapping="Wrap" Text="Dezimalzahl" LostFocus="TextBox_OnLostFocus" GotFocus="TextBox_OnGotFocus" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <GroupBox x:Name="groupBox" Grid.ColumnSpan="2" Header="Einstellungen" HorizontalAlignment="Left" Height="213" Margin="4,104,0,0" VerticalAlignment="Top" Width="509"/>
+        <Button x:Name="selectFileButton" Content="Auswählen" HorizontalAlignment="Right" Margin="0,245,14,0" VerticalAlignment="Top" Width="75" Click="SelectFileButton_Click" Grid.Column="1" Height="20"/>
+        <TextBox x:Name="selectedFileTextBox" HorizontalAlignment="Left" Height="23" Margin="20,244,0,0" TextWrapping="Wrap" Text="Wähle Datei aus, welche geöffnet werden soll ..." VerticalAlignment="Top" Width="379" IsEnabled="False" Grid.ColumnSpan="2"/>
+        <Label x:Name="label" Content="Bitfinex darf Kraken maximal übersteigen um:" HorizontalAlignment="Left"  Margin="20,120,0,0" VerticalAlignment="Top" Height="26" Width="250"/>
+        <Label x:Name="label1" Content="Kraken darf Bitfinex maximal übersteigen um:" HorizontalAlignment="Left" Margin="20,144,0,0" VerticalAlignment="Top" Height="26" Width="250"/>
+        <Label x:Name="label2" Content="Bitfinex Überprüfungsintervall in Sekunden:" HorizontalAlignment="Left" Margin="20,180,0,0" VerticalAlignment="Top" Height="26" Width="239"/>
+        <Label x:Name="label3" Content="Kraken Überprüfungsintervall in Sekunden:" HorizontalAlignment="Left" Margin="20,204,0,0" VerticalAlignment="Top" Height="26" Width="236"/>
+        <Button x:Name="applyButton" Content="Anwenden" HorizontalAlignment="Right" Click="ApplyButton_OnClick" Margin="0,288,14,0" VerticalAlignment="Top" Width="75" Grid.Column="1" RenderTransformOrigin="0.506,3.141" Height="20"/>
+        <TextBox x:Name="krakenToBitfinex" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,120,0,0" TextWrapping="Wrap" Text="Dezimalzahl" LostFocus="TextBox_OnLostFocus" GotFocus="TextBox_OnGotFocus" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="bitfinexToKraken" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,144,0,0" TextWrapping="Wrap" Text="Dezimalzahl" LostFocus="TextBox_OnLostFocus" GotFocus="TextBox_OnGotFocus" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="bitfinexIntervall" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,180,0,0" TextWrapping="Wrap" Text="Dezimalzahl" LostFocus="TextBox_OnLostFocus"  GotFocus="TextBox_OnGotFocus" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="krakenIntervall" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,204,0,0" TextWrapping="Wrap" Text="Dezimalzahl" LostFocus="TextBox_OnLostFocus" GotFocus="TextBox_OnGotFocus" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label4" Content="Atkueller Bitfinex-Kurs: " HorizontalAlignment="Left" Margin="17,17,0,0" VerticalAlignment="Top" Height="26" Width="133"/>
+        <Label x:Name="bitfinexKurs" Content="Waiting for data ..." Grid.Column="1" HorizontalAlignment="Left" Margin="3,17,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="krakenKurs" Content="Waiting for data ..." Grid.Column="1" HorizontalAlignment="Left" Margin="3,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label5" Content="Atkueller Kraken-Kurs: " HorizontalAlignment="Left" Margin="17,41,0,0" VerticalAlignment="Top" Height="24" Width="130"/>
+        <Label x:Name="differenceTextBox" Content="Waiting for data ..." HorizontalAlignment="Left" Margin="3,65,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="label6" Content="Aktuelle Differenz:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,65,0,0"/>
+        <Button x:Name="activateAlarmButton" Click="ActivateAlarmButton_OnClick" Content="Aktiviere Alarm" Grid.Column="1" HorizontalAlignment="Right" Margin="0,17,17,0" VerticalAlignment="Top" Width="84"/>
     </Grid>
 </Window>
