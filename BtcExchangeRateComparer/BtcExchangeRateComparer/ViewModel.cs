@@ -17,6 +17,7 @@ namespace btcExchangeRateComparer
         public decimal MaxDifferenceBitfinexToKraken { get; set; }
         public decimal CurrentKrakenRate { get; set; }
         public decimal CurrentBitfinexRate { get; set; }
+        public bool AlarmActive { get; set; }
 
         public ViewModel(
             decimal currentKrakenRate,
@@ -25,8 +26,10 @@ namespace btcExchangeRateComparer
             decimal maxDifferenceBitfinexToKrakenm,
             string path,
             TimeSpan intervallKraken,
-            TimeSpan intervallBitfinex)
+            TimeSpan intervallBitfinex,
+            bool alarmActive)
         {
+            AlarmActive = alarmActive;
             SelectedPath = path;
             CheckingIntervallBitfinex = intervallBitfinex;
             CheckingIntervallKraken = intervallKraken;
