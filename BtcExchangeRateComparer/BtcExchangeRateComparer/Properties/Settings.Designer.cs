@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace courseAlarm.Properties {
+namespace btcExchangeRateComparer.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -23,51 +23,39 @@ namespace courseAlarm.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://api.kraken.com")]
         public string KrakenBaseAddress {
             get {
                 return ((string)(this["KrakenBaseAddress"]));
             }
-            set {
-                this["KrakenBaseAddress"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public string KrakenApiVersion {
             get {
                 return ((string)(this["KrakenApiVersion"]));
             }
-            set {
-                this["KrakenApiVersion"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("your kraken key")]
         public string KrakenKey {
             get {
                 return ((string)(this["KrakenKey"]));
             }
-            set {
-                this["KrakenKey"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("your kraken secret")]
         public string KrakenSecret {
             get {
                 return ((string)(this["KrakenSecret"]));
-            }
-            set {
-                this["KrakenSecret"] = value;
             }
         }
     }
