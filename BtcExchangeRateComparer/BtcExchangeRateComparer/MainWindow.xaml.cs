@@ -114,7 +114,7 @@ namespace btcExchangeRateComparer
             if (result != true) return;
 
             selectedFileTextBox.Text = fileDialog.FileName;
-            _viewModel.SelectedPath = fileDialog.FileName;
+            
         }
 
 
@@ -140,6 +140,7 @@ namespace btcExchangeRateComparer
             _viewModel.CheckingIntervallKraken = new TimeSpan(0, 0, 0, 0, (int)Convert.ToDecimal(krakenIntervall.Text) * 1000);
             _viewModel.MaxDifferenceBitfinexToKraken = Convert.ToDecimal((bitfinexToKraken.Text));
             _viewModel.MaxDifferenceKrakenToBitfinex = Convert.ToDecimal(krakenToBitfinex.Text);
+            _viewModel.SelectedPath = selectedFileTextBox.Text;
             _bTimer.Change(_viewModel.CheckingIntervallBitfinex, _viewModel.CheckingIntervallBitfinex);
             _kTimer.Change(_viewModel.CheckingIntervallKraken, _viewModel.CheckingIntervallKraken);
         }
