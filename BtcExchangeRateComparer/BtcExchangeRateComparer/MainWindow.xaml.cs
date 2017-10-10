@@ -123,7 +123,7 @@ namespace btcExchangeRateComparer
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.ToString());
+                    MessageBox.Show(e.ToString(), "Error");
                 }
 
                 Application.Current.Dispatcher.Invoke(() =>
