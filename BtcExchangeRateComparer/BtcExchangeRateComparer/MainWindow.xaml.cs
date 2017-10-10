@@ -111,12 +111,21 @@ namespace btcExchangeRateComparer
         private void CompareExchangeRates(ViewModel vm)
         {
             if ((vm.CurrentBitfinexRate - vm.CurrentKrakenRate > vm.MaxDifferenceKrakenToBitfinex ||
-                 vm.CurrentKrakenRate - vm.CurrentBitfinexRate > vm.MaxDifferenceBitfinexToKraken)
-                &&
-                vm.AlarmActive)
+                   vm.CurrentKrakenRate - vm.CurrentBitfinexRate > vm.MaxDifferenceBitfinexToKraken)
+                  &&
+                  vm.AlarmActive)
             {
                 vm.AlarmActive = false;
-                Process.Start(vm.SelectedPath);
+
+                try
+                {
+                    Process.Start(vm.SelectedPath);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     activateAlarmButton.IsEnabled = true;
@@ -126,9 +135,7 @@ namespace btcExchangeRateComparer
 
         private decimal GetKrakenExchangeRate()
         {
-
-            var krakenClient = new KrakenClient.KrakenClient();
-            var response = krakenClient.GetTicker(new List<string>() { "XBTUSD" });
+            var response = _krakenClient.GetTicker(new List<string>() { "XBTUSD" });
             var rate = ((JsonArray)((JsonObject)((JsonObject)response["result"])["XXBTZUSD"])["c"])[0];
             var rateDecimal = Convert.ToDecimal(rate, new CultureInfo("en-US"));
             return rateDecimal;
