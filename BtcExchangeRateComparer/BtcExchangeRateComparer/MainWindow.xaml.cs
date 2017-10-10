@@ -55,7 +55,7 @@ namespace btcExchangeRateComparer
             }
             var checkingK = new TimeSpan(0, 0, 5);
             var checkingB = new TimeSpan(0, 0, 6);
-            var vm = new ViewModel(0, 0, decimal.MaxValue, decimal.MaxValue, null, checkingK, checkingB, true);
+            var vm = new ViewModel(0, 0, 0, 0, null, checkingK, checkingB, false);
             _viewModel = vm;
 
             _kTimer = new Timer(o =>
@@ -98,7 +98,7 @@ namespace btcExchangeRateComparer
             }, null, TimeSpan.Zero, checkingB);
 
 
-            activateAlarmButton.IsEnabled = false;
+            activateAlarmButton.IsEnabled = true;
             bitfinexIntervall.Text = "6";
             krakenIntervall.Text = "5";
             krakenToBitfinex.Text =
