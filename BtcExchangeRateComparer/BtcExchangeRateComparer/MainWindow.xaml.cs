@@ -55,13 +55,18 @@ namespace btcExchangeRateComparer
             }
             var checkingK = new TimeSpan(0, 0, 5);
             var checkingB = new TimeSpan(0, 0, 6);
-            var vm = new ViewModel(0, 0, 5000.0m, 5000.0m, null, checkingK, checkingB, true);
+            var vm = new ViewModel(0, 0, decimal.MaxValue, decimal.MaxValue, null, checkingK, checkingB, true);
             _viewModel = vm;
 
             _kTimer = new Timer(o =>
             {
-                vm.CurrentKrakenRate = GetKrakenExchangeRate();
-                CompareExchangeRates(vm);
+                try
+                {
+                    vm.CurrentKrakenRate = GetKrakenExchangeRate();
+                    CompareExchangeRates(vm);
+                }
+                catch (Exception) { }
+
 
                 Application.Current.Dispatcher.Invoke(
                     () =>
@@ -74,7 +79,12 @@ namespace btcExchangeRateComparer
             }, null, TimeSpan.Zero, checkingK);
             _bTimer = new Timer(o =>
             {
-                vm.CurrentBitfinexRate = GetBitfinexExchangeRate();
+                try
+                {
+                    vm.CurrentBitfinexRate = GetBitfinexExchangeRate();
+                }
+                catch (Exception) { }
+
                 CompareExchangeRates(vm);
 
                 Application.Current.Dispatcher.Invoke(
@@ -116,22 +126,13 @@ namespace btcExchangeRateComparer
 
         private decimal GetKrakenExchangeRate()
         {
-            try
-            {
-                var krakenClient = new KrakenClient.KrakenClient();
-                var response = krakenClient.GetTicker(new List<string>() { "XBTUSD" });
-                var rate = ((JsonArray)((JsonObject)((JsonObject)response["result"])["XXBTZUSD"])["c"])[0];
-                var rateDecimal = Convert.ToDecimal(rate, new CultureInfo("en-US"));
-                return rateDecimal;
-            }
-            catch (Exception e)
-            {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    MessageBox.Show(e.ToString(), "Error");
-                });
-            }
-            return 0m;
+
+            var krakenClient = new KrakenClient.KrakenClient();
+            var response = krakenClient.GetTicker(new List<string>() { "XBTUSD" });
+            var rate = ((JsonArray)((JsonObject)((JsonObject)response["result"])["XXBTZUSD"])["c"])[0];
+            var rateDecimal = Convert.ToDecimal(rate, new CultureInfo("en-US"));
+            return rateDecimal;
+
         }
 
         private decimal GetBitfinexExchangeRate()
@@ -141,24 +142,14 @@ namespace btcExchangeRateComparer
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.AutomaticDecompression = DecompressionMethods.GZip;
 
-            try
+            using (var response = (HttpWebResponse)request.GetResponse())
+            using (var stream = response.GetResponseStream())
+            using (var reader = new StreamReader(stream))
             {
-                using (var response = (HttpWebResponse)request.GetResponse())
-                using (var stream = response.GetResponseStream())
-                using (var reader = new StreamReader(stream))
-                {
-                    return JsonConvert.DeserializeObject<List<decimal>>(reader.ReadToEnd())[6];
-                }
+                return JsonConvert.DeserializeObject<List<decimal>>(reader.ReadToEnd())[6];
             }
-            catch (Exception e)
-            {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    MessageBox.Show(e.ToString(), "Error");
-                });
-            }
-            return 0m;
         }
+
 
 
         public void SelectFileButton_Click(object sender, RoutedEventArgs e)
